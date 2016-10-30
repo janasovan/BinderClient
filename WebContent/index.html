@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+<meta charset="UTF-8">
+<title>Binder - A Collaboration site for NIIT</title>
+
+<!-- Bootstrap, Font Awesome and jQuery css -->
+<link href="resources/css/font-awesome.css" rel="stylesheet">
+<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/css/jquery-ui.min.css" rel="stylesheet">
+
+<!-- style css -->
+<link href="resources/css/style.css" rel="stylesheet">
+
+<link href="resources/css/myApp.css" rel="stylesheet">
+
+<link href='http://fonts.googleapis.com/css?family=Marcellus' rel='stylesheet' type='text/css'>
+</head>
+
+
+<body>
+	<!-- ---------------------- navbar start -------------------------->
+	<div class="container">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="logo">
+					<a class="navbar-brand" href="#/"></a>
+				</div>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+				<nav class="link-effect-12" id="link-effect-12">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#/"><span>Home</span></a></li>
+						<li><a href="#/job_opportunities"><span>Job</span></a></li>
+						<li><a href="#/event"><span>Event</span></a></li>
+						<li><a class="dropdown-toggle" data-toggle="dropdown" href="">Blog<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+          						<li><a href="#/create_blog"><span>Add New Blog</span></a></li>
+          						<li><a href="#/list_blog"><span>Show All Blogs</span></a></li>
+          						<li><a href="#/view_blog"><span>View Blog</span></a></li>
+        					</ul>
+        				</li>
+        				<li><a class="dropdown-toggle" data-toggle="dropdown" href="">Forum<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+          						<li><a href="#/create_forum"><span>Add New Forum</span></a></li>
+          						<li><a href="#/list_forum"><span>Show All Forums</span></a></li>
+          						<li><a href="#/view_forum"><span>View Forum</span></a></li>
+        					</ul>
+        				</li>
+        				<li><a class="dropdown-toggle" data-toggle="dropdown" href="">Friend<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+          						<li><a href="#/add_friend"><span>Add New Friend</span></a></li>
+          						<li><a href="#/search_friend"><span>Search Friends</span></a></li>
+          						<li><a href="#/view_friend"><span>View Friends</span></a></li>
+        					</ul>
+        				</li>
+						<li><a href="#"><span>Chat</span></a></li>
+						<li><a href="#/about"><span>About</span></a></li>
+						<li><a class="dropdown-toggle" data-toggle="dropdown" href="">Sign In<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+          						<li><a href="#/login"><span>Sign In</span></a></li>
+          						<li><a href="#/register"><span>Sign Up</span></a></li>
+        					</ul>
+        				</li>
+					</ul>
+				</nav>
+			</div>
+			<!-- /.navbar-collapse -->
+		</nav>
+	</div>
+	<!-- ---------------------- /navbar end -------------------------->
+
+	<!-- ------------------- content area start ---------------------->
+	
+	<div ng-view></div>
+
+	<!-- ------------------- content area start ---------------------->
+
+	<!-- ---------------------- footer start ------------------------->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-bottom">
+				<div class="footer-bottom-left">
+					<p>@2016. <a href="#">Binder.</a>Copyright by NIIT Ltd.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ---------------------- /footer end ------------------------->
+
+
+
+	<!--  javascript for (angular + jquery + bootstrap)  -->
+	<script src="resources/js/angular.js"></script>
+	<script src="resources/js/angular-route.min.js"></script>
+	<script src="resources/js/jquery-1.11.0.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	
+	<!-- modulewise custom javascript -->
+	<script src="resources/js/app.js"></script>
+	<!-- <script src="b_home/HomeController.js"></script> -->
+
+	<!-- user related js files -->
+<!-- 	<script src="b_user/UserController.js"></script>
+	<script src="b_user/UserService.js"></script> -->
+	
+	<!-- blog related js files -->
+<!-- 	<script src="b_blog/BlogController.js"></script>
+	<script src="b_blog/BlogService.js"></script> -->
+	
+	<!-- forum related js files -->
+<!-- 	<script src="b_forum/ForumController.js"></script>
+	<script src="b_forum/ForumService.js"></script> -->
+	
+	<!-- friend related js files -->
+<!-- 	<script src="b_friend/FriendController.js"></script>
+	<script src="b_friend/FriendService.js"></script> -->
+	
+	<!-- event related js files -->
+<!-- 	<script src="b_event/EventController.js"></script>
+	<script src="b_event/EventService.js"></script> -->
+	
+	<!-- admin related js files -->
+<!-- 	<script src="b_admin/AdminController.js"></script>
+	<script src="b_admin/AdminService.js"></script> -->
+	
+	<!-- job related js files -->
+<!-- 	<script src="b_job/JobController.js"></script>
+	<script src="b_job/JobService.js"></script> -->
+	
+	<!-- about related js files -->
+<!-- 	<script src="b_about/AboutController.js"></script>
+	<script src="b_about/AboutService.js"></script> -->
+		
+</body>
+</html>

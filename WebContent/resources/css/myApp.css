@@ -1,0 +1,137 @@
+html, body {height: 100%;}
+.floatleft {float:left}
+.floatright {float:right}
+.k-padding{
+  padding:150px 0;
+}
+.k-padding-top-4 {
+  padding-top: 40px;
+}
+/* registration and login page start */
+.kp-button{
+  	text-align: left;
+    padding: 10px 25px;
+    font-weight: 700;
+    color: #222;
+    border: 2px solid cadetblue;
+    text-transform: uppercase;
+    height: 40px;
+    display: inline-block;
+    border-radius: 5px;
+    outline: none;
+    background-color: #fff;
+    line-height: 19px;
+    transition: .3s;
+}
+.kp-button:hover{
+  background-color: grey;
+  color: #fff;
+  text-decoration: none;
+}
+.kp-button-2{
+  background: #ef6644;
+  color: #fff;
+}
+.kp-button-2:hover{
+    background-color: #fff;
+    color: #ef6644;
+}
+.contact-info {
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+}
+.contact-us-form .single-input.one-half:nth-child(1){
+  padding-right: 15px;
+}
+.form-area .form-inner .single-input {
+  margin-bottom:20px;
+}
+.one{
+	padding: 5px;
+  width: 100%;
+}
+.one-half {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+.form-area .form-inner .single-input label {
+  color: #333;
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 15px;
+  margin-bottom: 10px;
+}
+.form-area .form-inner .single-input label span{
+  color: #ff0000;
+  display: inline-block;
+  margin-left: 5px;
+}
+.form-area .form-inner input[type="text"] {
+  background: #ffffff none repeat scroll 0 0;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px;
+  width: 100%;
+}
+.form-area .form-inner input[type="password"] {
+  background: #ffffff none repeat scroll 0 0;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px;
+  width: 100%;
+}
+.form-area .form-inner input[type="email"] {
+  background: #ffffff none repeat scroll 0 0;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px;
+  width: 100%;
+}
+.form-area .form-inner input[type="tel"] {
+  background: #ffffff none repeat scroll 0 0;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px;
+  width: 100%;
+}
+.form-area .form-inner input[type="radio"] {
+  margin: 12px 0px 15px 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 10em;
+    background: #ffffff none repeat scroll 0 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    line-height: 20px;
+    padding: 0 15px;
+}
+.form-area .form-inner label {
+  background: rgb(236, 236, 236) none repeat scroll 0 0;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px;
+  width: 100%;
+}
+.col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2 {
+    background-color: rgba(0, 0, 0, 0.32);
+    padding: 2em 2em 3em 2em;
+    border-style: outset;
+    border-width: 8px;
+    border-radius: 24px;
+}
+/* registration and login page end */

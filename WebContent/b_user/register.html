@@ -1,0 +1,53 @@
+<div id="register" data-ng-controller="UserController as ctrl">
+	<div class="container">
+		<div class="form-area k-padding">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2" >				
+					<div data-ng-show='ctrl.users.errorMessage!=""'>
+						<div class="alart alart-danger fade in">
+							Error : {{ctrl.users.errorMessage}}
+						</div>
+					</div>
+					<fieldset>
+						<legend>Sign Up</legend>
+						<div class="form-inner">
+							<form data-ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
+								<label>Register As.</label>
+								<div class="one">
+									<input type="radio" name="role" value="student" data-ng-model="ctrl.users.role"> Student
+									<input type="radio" name="role" value="alumni" data-ng-model="ctrl.users.role"> Alumni
+									<input type="radio" name="role" value="employee" data-ng-model="ctrl.users.role"> Employee
+								</div>
+								
+								<div class="one-half">
+									<input type="text" name="id" id="id" required data-ng-minlength="5" placeholder="User ID" data-ng-model="ctrl.users.id" />
+								</div>
+								<div class="one-half">
+									<input type="text" name="name" id="name" required data-ng-minlength="5" placeholder="User Name" data-ng-model="ctrl.users.name" />
+								</div>
+								<div class="one-half">
+									<input type="password" name="password" id="password" required data-ng-minlength="5" placeholder="Password" data-ng-model="ctrl.users.password"/>
+								</div>
+								<div class="one-half">
+									<input type="email" name="email" id="email" required placeholder="Email Id" data-ng-model="ctrl.users.email" />
+								</div>
+								<div class="one-half">
+									<input type="tel" name="phone" id="phone" required placeholder="Phone No" data-ng-model="ctrl.users.phone" />
+								</div>
+								<div class="one-half">
+									<input type="radio" name="gender" id="gender" value="male" data-ng-model="ctrl.users.gender"> Male 
+									<input type="radio" name="gender" id="gender" value="female" data-ng-model="ctrl.users.gender"> Female
+								</div>
+
+								<div>
+									<input type="submit" class="btn btn-info kp-button floatright" value="register">
+									<input type="button" class="btn btn-info kp-button floatright" value="reset form" data-ng-click="ctrl.reset()">
+								</div>
+							</form>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
