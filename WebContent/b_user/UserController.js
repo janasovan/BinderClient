@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 app.controller('UserController', [
 		'$scope',
@@ -8,14 +8,19 @@ app.controller('UserController', [
 		function($scope, UserService, $location, $rootScope) {
 			console.log("UserController....")
 			var self = this;
-			self.users = {
-				id : '',
-				name : '',
-				password : '',
-				email : '',
-				phone : '',
-				role : '',
-				errorMessage : ''
+			self.user = {
+				"errorCode": '',
+				"errorMessage": '',
+				"id": '',
+				"name": '',
+				"password": '',
+				"gender": '',
+				"email": '',
+				"phone": '',
+				"role": '',
+				"isOnline": '',
+				"image": '',
+				"photos": ''
 			};
 			self.users = [];
 
@@ -73,6 +78,20 @@ app.controller('UserController', [
 					console.log('Saving new user...', self.users);
 					self.createUser(self.users);
 				}
+				self.reset();
+			};
+			
+			self.reset = function() {
+				self.users = {
+						id : '',
+						name : '',
+						password : '',
+						email : '',
+						phone : '',
+						role : '',
+						errorMessage : ''
+				};
+				$scope.myForm.$setPristine();
 			};
 
 		} ]);

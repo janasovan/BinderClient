@@ -25,16 +25,18 @@ app.controller('BlogController', [
 			/**
 			 * method definition.....
 			 */
-			
+
 			self.getSelectedBlog = function(id) {
-				console.log("getting blog with id : " + id)
-				BlogService.getBlog(id).then(function(d) {
+				console.log("getting blog with id : " + id);
+				BlogService.getSelectedBlog(id).then(function(d) {
 					self.blog = d;
+					
+					console.log("test  "+d);
 					$location.path('/view_blog');
 				}, function(errResponse) {
 					console.error('Error while fetching Blog...');
 				});
-			};			
+			};
 
 			self.fetchAllBlogs = function() {
 				BlogService.fetchAllBlogs().then(function(d) {
@@ -69,7 +71,7 @@ app.controller('BlogController', [
 
 			self.submit = function() {
 				{
-				console.log('Saving new Blog', self.blog);
+					console.log('Saving new Blog', self.blog);
 					self.createBlog(self.blog);
 				}
 				self.reset();
@@ -96,16 +98,16 @@ app.controller('BlogController', [
 			self.reset = function() {
 				console.log('submit a new Blog', self.blog);
 				self.blog = {
-						id : '',
-						title : '',
-						reason : '',
-						content : '',
-						post_date : '',
-						userId : '',
-						status : '',
-						errorCode : '',
-						errorMessage : ''
+					id : '',
+					title : '',
+					reason : '',
+					content : '',
+					post_date : '',
+					userId : '',
+					status : '',
+					errorCode : '',
+					errorMessage : ''
 				};
-				$scope.myForm.$setPristine();	//reset form...
+				$scope.myForm.$setPristine(); // reset form...
 			};
 		} ]);

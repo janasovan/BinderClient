@@ -1,21 +1,21 @@
-<div id="blog-page">
+<div id="forum-page">
       <div class="container">
         <div class="row">
           <div class="col-md-8">
-            <h1 class="text-uppercase" id="blog-name"><a href="#">{{ctrl.blog.title}}</a></h1>
-            <h4>Written By : {{ctrl.blog.userId}} &nbsp;&nbsp;   On {{selectedBlog.postDate}}</h4>
+            <h1 class="text-uppercase" id="forum-name"><a href="#">~~ Forum ~~</a></h1>
+            <h4>Written By : {{ctrl.forum.userId}} &nbsp;&nbsp;   On {{selectedForum.postDate}}</h4>
           </div>
         </div>
         <div class="row">
           <div class="col-md-8">
-            <div id="blog-area">
-              <h3 class="entry-title"><i class="fa fa-flag fa-fw">{{selectedBlog.reason}}</i></h3>
-              <p>{{selectedBlog.content}}</p>
+            <div id="forum-area">
+              <!-- <h3 class="entry-title"><i class="fa fa-flag fa-fw">{{selectedForum.reason}}</i></h3> -->
+              <p>{{selectedForum.description}}</p>
               <p class="author text-right">
                 <strong>Best regards</strong><br>
-                <small>{{selectedBlog.userId}}</small>
+                <small>{{selectedForum.userId}}</small>
               </p>
-            </div><!-- /blog-area -->
+            </div><!-- /forum-area -->
           </div><!-- /col-md-8 -->
           
           
@@ -23,7 +23,7 @@
           
           <div class="col-md-4">
             <div class="widget">
-              <div class="minor-header"><h4><i class="fa fa-cubes fa-fw"></i> Other blogs</h4></div>
+              <div class="minor-header"><h4><i class="fa fa-cubes fa-fw"></i> Other forums</h4></div>
               <div class="media">
               	<h4 class="media-heading">Media heading</h4>
                   Cras sit amet nibh libero, in gravida nulla..

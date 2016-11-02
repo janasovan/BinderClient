@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 app.factory('JobService', ['$http', '$q', '$rootScope',
     function($http, $q, $rootScope) {

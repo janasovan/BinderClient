@@ -38,6 +38,18 @@ app.controller('JobController', ['JobService', '$scope', '$location', '$rootScop
 						});
 
 		};
+		
+		self.getJobDetails = function(jobId) {
+			console.log('calling the method getJobDetails...');
+			JobService
+						.getJobDetails(jobId)
+						.then(function(d) {
+							self.jobs = d;
+						},
+						function(errResponse) {
+							console.error('Error while fetching job details...')
+						});
+		};
 
 		self.getMyAppliedJobs = function() {
 			console.log('calling the method getMyAppliedJobs...');
@@ -118,21 +130,7 @@ app.controller('JobController', ['JobService', '$scope', '$location', '$rootScop
 						});
 		};
 
-		self.getAllJobs();
-
-		self.getJobDetails = function(jobId) {
-			console.log('calling the method getJobDetails...');
-			JobService
-						.getJobDetails(jobId)
-						.then(function(d) {
-							self.job = d;
-
-							$location.path('/view_job_details');
-						},
-						function(errResponse) {
-							console.error('Error while fetching Job details...');
-						});
-		};
+		
 		
 		self.submit = function() {
 			{

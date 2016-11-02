@@ -1,4 +1,5 @@
-<div id="signin">
+
+<div id="login" >
 	<div class="container">
 		<div class="form-area k-padding">
 			<div class="row">
@@ -6,20 +7,20 @@
 					<fieldset>
 						<legend>Login</legend>
 						<div class="form-inner">
-							<form name="login" action="" method="POST">
+							<form ng-submit="ctrl.submit()" name="myForm" >
 								<div class="one-half">
-									<input type="text" name="username" required="true"
-										placeholder="UserID">
+									<input type="text" name="username" required 
+										placeholder="UserID" ng-model="ctrl.users.id">
 								</div>
 								<div class="one-half">
-									<input type="password" name="password" required="true"
-										placeholder="Password" />
+									<input type="password" name="password" required 
+										placeholder="Password" ng-model="ctrl.users.password">
 								</div>
 								<div>
 									<input type="submit" class="btn btn-info kp-button floatright"
 										value="login">
 								</div>
-							</form>							
+							</form>
 						</div>
 					</fieldset>
 				</div>

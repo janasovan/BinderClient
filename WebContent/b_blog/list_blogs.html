@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-</head>
-<body>
-	<div class="container" data-ng-controller="BlogController as ctrl">
-		Welcome to Blogs
-		<div data-ng-repeat="ctrl.blogs">
-			<a href="#" data-ng-click="ctrl.getSelectedBlog(blog.id)">
-				Title: {{blog.title}} - Written By: {{blog.userId}}
-			</a>
-		</div>
+<div class="container">
+	Welcome to Blogs
+	<div ng-repeat="blog in ctrl.blogs">
+		<a href="#" data-ng-click="ctrl.getSelectedBlog(blog.id)"> Title:
+			{{blog.title}} - Written By: {{blog.userId}} </a>
 	</div>
-</body>
-</html>
+</div>
