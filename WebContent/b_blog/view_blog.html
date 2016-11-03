@@ -2,8 +2,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8">
-            <h1 class="text-uppercase" id="blog-name"><a href="#">{{ctrl.blog.title}}</a></h1>
-            <h4>Written By : {{ctrl.blog.userId}} &nbsp;&nbsp;   On {{selectedBlog.postDate}}</h4>
+            <h1 class="text-uppercase" id="blog-name"><a href="#">{{selectedBlog.title}}</a></h1>
+            <h4>Written By : {{selectedBlog.userId}} &nbsp;&nbsp;   On {{selectedBlog.postDate | date}}</h4>
           </div>
         </div>
         <div class="row">

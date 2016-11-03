@@ -1,4 +1,5 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute','ngCookies']);
+/*var app = angular.module('myApp', ['ngRoute']);*/
 
 app.config(function($routeProvider) {
 	$routeProvider
@@ -95,10 +96,25 @@ app.config(function($routeProvider) {
 	 * Job related mapping
 	 */
 	
-	.when('/job_opportunities', {
-		templateUrl : 'b_job/job.html',
+	.when('/post_job', {
+		templateUrl : 'b_job/post_job.html',
 		controller : 'JobController as ctrl'
-	})	
+	})
+	
+	.when('/search_job', {
+		templateUrl : 'b_job/search_job.html',
+		controller : 'JobController as ctrl'
+	})
+	
+	.when('/view_applied_jobs', {
+		templateUrl : 'b_job/view_applied_jobs.html',
+		controller : 'JobController as ctrl'
+	})
+	
+	.when('/view_job_details', {
+		templateUrl : 'b_job/view_job_details.html',
+		controller : 'JobController as ctrl'
+	})
 	
 	/**
 	 * About related mapping
@@ -130,5 +146,24 @@ app.config(function($routeProvider) {
 	 */
 		
 	.otherwise({redirectTo : '/'});
+	
+	
+	
+	app.run(function($rootScope, $location, $cookieSrore, $http) {
+		$rootScope.$on('$locationChangeStart', function(event, next,current) {
+			//redirect to login page if try to access a restricted page
+			var restrictedPage = $.inArray($location.path(), ['/','/login', '/register','/list_blog','/view_blog']) === -1;
+			var loggedIn = $rootScope.currentUser;
+			if (restrictedPage && !loggedIn) {
+				$location.path('/login');
+			}
+		});
+		
+		//keep user logged in after page refresh...
+		$rootScope.currentUser = $cookieStore.get('currentUser') || {};
+		if($rootScope.currentUser) {
+			$http.defaults.header.common['Authorization'] = 'Basic'+$rootScope.currentUser;
+		}
+	});
 	
 });

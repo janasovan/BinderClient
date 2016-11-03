@@ -1,11 +1,13 @@
 'use strict';
 
 app.controller('UserController', [
+		'$http',
+		'$cookieStore',
 		'$scope',
 		'UserService',
 		'$location',
 		'$rootScope',
-		function($scope, UserService, $location, $rootScope) {
+		function($http, $cookieStore, $scope, UserService, $location, $rootScope) {
 			console.log("UserController....")
 			var self = this;
 			self.user = {
@@ -25,6 +27,7 @@ app.controller('UserController', [
 			self.users = [];
 
 			self.fetchAllUsers = function() {
+				console.log("--> UserController : calling fetchAllUsers method.");
 				UserService.fetchAllUsers().then(function(d) {
 					self.users = d;
 				}, function(errResponse) {
@@ -32,32 +35,59 @@ app.controller('UserController', [
 				});
 			};
 
-			self.createUser = function(users) {
-				UserService.createUser(users).then(self.fetchAllUsers,
+			self.createUser = function(user) {
+				console.log("--> UserController : calling createUser method.");
+				UserService.createUser(user).then(self.fetchAllUsers,
 						function(errResponse) {
 							console.error('Error while creating User...');
 						});
 			};
 
-			self.updateUser = function(users, id) {
-				UserService.updateUser(users, id).then(self.fetchAllUsers,
+			self.updateUser = function(user, id) {
+				console.log("--> UserController : calling updateUser method.");
+				UserService.updateUser(user, id).then(self.fetchAllUsers,
 						function(errResponse) {
 							console.error('Error while updating User...');
 						});
 			};
 
-			self.authenticate = function(users) {
-				UserService.authenticate(users).then(function(d) {
-					self.users = d;
-					if ($rootScope.currentUser) {
+			self.authenticate = function(user) {
+				console.log("--> UserController : calling authenticate method.");
+				UserService.authenticate(user).then(function(d) {
+					self.user = d;
+					console.log("user.errorCode : "+self.user.errorCode);
+					if(self.user.errorCode == "404") {
+						alert("Invalid Credentials. Please try again.")
+						
+						self.user.id = "";
+						self.user.password = "";
+					} else {
+						console.log("Valid Credentials. Navigating to home page.");
+						$rootScope.currentUser = {
+								name : self.user.name,
+								id : self.user.id,
+								role : self.user.role,
+						};
+						$http.defaults.headers.common['Authorization'] = 'Basic' + $rootScope.currentUser;
+						$cookieStore.put('currentUser', $rootScope.currentUser);
 						$location.path('/');
 					}
-				}, function(errResponse) {
+				}, 
+				function(errResponse) {
 					console.error('Error while authenticate User...');
 				});
 			};
+			
+			self.logout = function() {
+				console.log("--> UserController : calling logout function.");
+				$rootScope.currentUser = {};
+				$cookieStore.remove('currentUser');
+				console.log("--> UserController : UserService.logout()");
+				UserService.logout()
+			}
 
 			self.deleteUser = function(id) {
+				console.log("--> UserController : calling deleteUser function.");
 				UserService.deleteUser(id).then(self.fetchAllUsers,
 						function(errResponse) {
 							console.error('Error while deleting User...');
@@ -68,21 +98,21 @@ app.controller('UserController', [
 
 			self.login = function() {
 				{
-					console.log('login validation ??????????', self.users);
-					self.authenticate(self.users);
+					console.log('login validation ??????????', self.user);
+					self.authenticate(self.user);
 				}
 			};
 
 			self.submit = function() {
 				{
-					console.log('Saving new user...', self.users);
-					self.createUser(self.users);
+					console.log('Saving new user...', self.user);
+					self.createUser(self.user);
 				}
 				self.reset();
 			};
 			
 			self.reset = function() {
-				self.users = {
+				self.user = {
 						id : '',
 						name : '',
 						password : '',

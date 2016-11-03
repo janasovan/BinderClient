@@ -27,11 +27,12 @@ app.controller('BlogController', [
 			 */
 
 			self.getSelectedBlog = function(id) {
-				console.log("getting blog with id : " + id);
+				console.log("-->getSelectedBlog : getting blog with id : " + id);
 				BlogService.getSelectedBlog(id).then(function(d) {
+					/*$rootScope.selectedBlog = d;*/
 					self.blog = d;
 					
-					console.log("test  "+d);
+					console.log("test  "+d.title);
 					$location.path('/view_blog');
 				}, function(errResponse) {
 					console.error('Error while fetching Blog...');

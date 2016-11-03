@@ -3,9 +3,9 @@
 		<div class="form-area">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-					<div ng-show='ctrl.users.errorMessage!=""'>
+					<div ng-show='ctrl.user.errorMessage!=""'>
 						<div class="alart alart-danger fade in">Error :
-							{{ctrl.users.errorMessage}}</div>
+							{{ctrl.user.errorMessage}}</div>
 					</div>
 					<fieldset>
 						<legend>Sign Up</legend>
@@ -15,41 +15,41 @@
 								<label>Register As.</label>
 								<div class="one">
 									<input type="radio" name="role" value="student"
-										ng-model="ctrl.users.role"> Student 
+										ng-model="ctrl.user.role"> Student 
 										<input type="radio" name="role" value="alumni"
-										ng-model="ctrl.users.role"> Alumni 
+										ng-model="ctrl.user.role"> Alumni 
 										<input type="radio" name="role" value="employee"
-										ng-model="ctrl.users.role"> Employee
+										ng-model="ctrl.user.role"> Employee
 								</div>
 
 								<div class="one-half">
-									<input type="text" name="id" id="id" required
+									<input type="text" name="id"required
 										ng-minlength="5" placeholder="User ID"
-										ng-model="ctrl.users.id" />
+										ng-model="ctrl.user.id" />
 								</div>
 								<div class="one-half">
-									<input type="text" name="name" id="name" required
+									<input type="text" name="name" required
 										ng-minlength="5" placeholder="User Name"
-										ng-model="ctrl.users.name" />
+										ng-model="ctrl.user.name" />
 								</div>
 								<div class="one-half">
-									<input type="password" name="password" id="password" required
+									<input type="password" name="password" required
 										ng-minlength="5" placeholder="Password"
-										ng-model="ctrl.users.password" />
+										ng-model="ctrl.user.password" />
 								</div>
 								<div class="one-half">
 									<input type="email" name="email" id="email" required
-										placeholder="Email Id" ng-model="ctrl.users.email" />
+										placeholder="Email Id" ng-model="ctrl.user.email" />
 								</div>
 								<div class="one-half">
 									<input type="tel" name="phone" id="phone" required
-										placeholder="Phone No" ng-model="ctrl.users.phone" />
+										placeholder="Phone No" ng-model="ctrl.user.phone" />
 								</div>
 								<div class="one-half">
 									<input type="radio" name="gender" id="gender" value="male"
-										ng-model="ctrl.users.gender"> Male 
+										ng-model="ctrl.user.gender"> Male 
 									<input type="radio" name="gender" id="gender" value="female"
-										ng-model="ctrl.users.gender"> Female
+										ng-model="ctrl.user.gender"> Female
 								</div>
 
 								<div>

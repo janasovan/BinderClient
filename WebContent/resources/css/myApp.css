@@ -639,7 +639,31 @@ textarea {
 strong {
     color: black;
 }
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ /view_blog ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ post_job ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+h2.job-h2 {
+  font-weight: bold;
+  font-family: monospace;
+}
+.post-job {
+  margin: 40px 0 20px;
+}
+.page-header {
+  padding: 10px 15px;
+  margin: 20px 0 10px;
+  border-bottom: 1px dotted #f6f6f6;
+  text-align: center;
+  text-transform: uppercase;
+}
+.section-heading {
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding: 20px 0 20px 0;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ post_job ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
  
 /* ~~~~~~~~~~~~~~~~~~~~~ sticky & floating footer ~~~~~~~~~~~~~~~~~~~~~~~ */
 
