@@ -1,6 +1,6 @@
 <div class="container">
-	Welcome to Blogs
-	<div ng-repeat="blog in ctrl.blogs">
+	Welcome to Blog
+	<div class="blog-list-font" ng-repeat="blog in ctrl.blogs">
 		<a href="#" ng-click="ctrl.getSelectedBlog(blog.id)"> 
 		Title: {{blog.title}} - Written By: {{blog.userId}} </a>
 	</div>

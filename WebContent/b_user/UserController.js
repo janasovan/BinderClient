@@ -63,11 +63,11 @@ app.controller('UserController', [
 						self.user.password = "";
 					} else {
 						console.log("Valid Credentials. Navigating to home page.");
-						$rootScope.currentUser = {
+						/*$rootScope.currentUser = {
 								name : self.user.name,
 								id : self.user.id,
 								role : self.user.role,
-						};
+						};*/
 						$http.defaults.headers.common['Authorization'] = 'Basic' + $rootScope.currentUser;
 						$cookieStore.put('currentUser', $rootScope.currentUser);
 						$location.path('/');
@@ -82,8 +82,8 @@ app.controller('UserController', [
 				console.log("--> UserController : calling logout function.");
 				$rootScope.currentUser = {};
 				$cookieStore.remove('currentUser');
-				console.log("--> UserController : UserService.logout()");
 				UserService.logout()
+				console.log("-->UserController : User Logged out.");
 			}
 
 			self.deleteUser = function(id) {
@@ -103,11 +103,13 @@ app.controller('UserController', [
 				}
 			};
 
-			self.submit = function() {
+			self.register = function() {
 				{
-					console.log('Saving new user...', self.user);
+					console.log("--> UserController : calling register() method.", self.user);
 					self.createUser(self.user);
+					console.log('Saving new user...');
 				}
+				$location.path('/login');
 				self.reset();
 			};
 			

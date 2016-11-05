@@ -7,10 +7,10 @@ app.controller('FriendController', [ 'FriendService', 'UserService', '$scope',
 
 			var self = this;
 			self.friend = {
-				id : '',
-				userId : '',
-				friendId : '',
-				status : ''
+				"id" : '',
+				"userId" : '',
+				"friendId" : '',
+				"status" : ''
 			};
 			self.friends = [];
 

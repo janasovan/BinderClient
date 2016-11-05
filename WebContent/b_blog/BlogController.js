@@ -27,9 +27,8 @@ app.controller('BlogController', [
 			 */
 
 			self.getSelectedBlog = function(id) {
-				console.log("-->getSelectedBlog : getting blog with id : " + id);
+				console.log("-->BlogController : calling getSelectedBlog method : getting blog with id : " + id);
 				BlogService.getSelectedBlog(id).then(function(d) {
-					/*$rootScope.selectedBlog = d;*/
 					self.blog = d;
 					
 					console.log("test  "+d.title);
@@ -40,6 +39,7 @@ app.controller('BlogController', [
 			};
 
 			self.fetchAllBlogs = function() {
+				console.log("--> BlogController : calling fetchAllBlogs method.");
 				BlogService.fetchAllBlogs().then(function(d) {
 					self.blogs = d;
 				}, function(errResponse) {
@@ -48,6 +48,7 @@ app.controller('BlogController', [
 			};
 
 			self.createBlog = function(blog) {
+				console.log("--> BlogController : calling createBlog method.");
 				BlogService.createBlog(blog).then(self.fetchAllBlogs,
 						function(errResponse) {
 							console.error('Error while creating blog...');
@@ -72,8 +73,9 @@ app.controller('BlogController', [
 
 			self.submit = function() {
 				{
-					console.log('Saving new Blog', self.blog);
+					console.log("--> BlogController : calling submit() method.", self.blog);
 					self.createBlog(self.blog);
+					console.log('Saving new Blog', self.blog);
 				}
 				self.reset();
 			};

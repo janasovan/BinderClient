@@ -1,0 +1,7 @@
+<div class="container">
+	Welcome to Forum
+	<div class="blog-list-font" ng-repeat="forum in ctrl.forums">
+		<a href="#" ng-click="ctrl.getSelectedForum(forum.id)"> 
+		Title: {{forum.id}} - Written By: {{forum.userId}} </a>
+	</div>
+</div>

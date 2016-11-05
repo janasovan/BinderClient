@@ -21,6 +21,7 @@ app.factory('BlogService', ['$http', '$q', '$rootScope',
 				},
 				
 				fetchAllBlogs : function() {
+					console.log("--> BlogService : calling 'fetchAllBlogs' method.");
 					return $http
 								.get(BASE_URL + '/blogs')
 								.then(function(response) {
@@ -33,6 +34,7 @@ app.factory('BlogService', ['$http', '$q', '$rootScope',
 				},
 
 				createBlog : function(blog) {
+					console.log("--> BlogService : calling 'createBlog' method.");
 					return $http
 								.post(BASE_URL + '/blog/', blog)
 								.then(function(response) {

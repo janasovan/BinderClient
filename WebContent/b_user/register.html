@@ -4,13 +4,14 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 					<div ng-show='ctrl.user.errorMessage!=""'>
-						<div class="alart alart-danger fade in">Error :
-							{{ctrl.user.errorMessage}}</div>
+						<div class="alart alart-danger fade in">
+							Error :	{{ctrl.user.errorMessage}}
+						</div>
 					</div>
 					<fieldset>
 						<legend>Sign Up</legend>
 						<div class="form-inner">
-							<form ng-submit="ctrl.submit()" name="myForm"
+							<form ng-submit="ctrl.register()" name="myForm"
 								class="form-horizontal">
 								<label>Register As.</label>
 								<div class="one">

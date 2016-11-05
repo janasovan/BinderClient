@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<div id="view_friend">
+	<div class="container">
+		<div class="form-group"></div>
+			Search for friend
+		<div ng-repeat="friend in ctrl.friends">
+			<fieldset>
+				<legend></legend>
+				<p>Name : {{friend.friendId}} &nbsp;&nbsp;
+					Status : {{friend.status}}
+				<a>Send Message</a>
+			</fieldset>
+		</div>
+	</div>
+</div>
