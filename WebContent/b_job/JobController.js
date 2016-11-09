@@ -19,7 +19,8 @@ app.controller('JobController', ['JobService', '$scope', '$location', '$rootScop
 
 		self.jobs = [];
 
-		self.applyForJob = function (jobId) {
+		self.applyForJob = applyForJob
+		function applyForJob (jobId) {
 			console.log('calling the method applyForJob...');
 			var currentUser = $rootScope.currentUser
 			if (typeof currentUser == 'undefined') {
@@ -129,8 +130,6 @@ app.controller('JobController', ['JobService', '$scope', '$location', '$rootScop
 							console.error('Error while fetching all jobs...');
 						});
 		};
-
-		
 		
 		self.submit = function() {
 			{

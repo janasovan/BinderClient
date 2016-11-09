@@ -1,7 +1,10 @@
 <div class="container">
 	Search Jobs
 	<div ng-repeat="job in ctrl.jobs">
-		<a href="#" ng-click="ctrl.getSelectedBlog(blog.id)"> 
-		Title: {{blog.title}} - Written By: {{blog.userId}} </a>
+		<a ng-click="ctrl.getJobDetails(job.jobId)"> 
+			Job ID : {{job.id}}<br>
+			Company Name : {{job.companyName}}<br>
+			Job Location : {{job.location}}<br>
+		</a>
 	</div>
 </div>

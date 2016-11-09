@@ -30,8 +30,6 @@ app.controller('BlogController', [
 				console.log("-->BlogController : calling getSelectedBlog method : getting blog with id : " + id);
 				BlogService.getSelectedBlog(id).then(function(d) {
 					self.blog = d;
-					
-					console.log("test  "+d.title);
 					$location.path('/view_blog');
 				}, function(errResponse) {
 					console.error('Error while fetching Blog...');
@@ -46,7 +44,7 @@ app.controller('BlogController', [
 					console.error('Error while fetching Blogs...');
 				});
 			};
-
+			
 			self.createBlog = function(blog) {
 				console.log("--> BlogController : calling createBlog method.");
 				BlogService.createBlog(blog).then(self.fetchAllBlogs,
@@ -79,7 +77,23 @@ app.controller('BlogController', [
 				}
 				self.reset();
 			};
+			
+			self.approveBlog = function(blog, id) {
+				console.log("-->BlogController : calling approveBlog() method : getting blog with id : " + id);
+				BlogService.approveBlog(blog, id).then(self.fetchAllBlogs,
+						function(errResponse) {
+							console.error("Error while approving blog...")
+						});
+			};
 
+			self.rejectBlog = function(blog, id) {
+				console.log("-->BlogController : calling rejectBlog() method : getting blog with id : " + id);
+				BlogService.rejectBlog(blog, id).then(self.fetchAllBlogs,
+						function(errResponse) {
+							console.error("Error while rejecting blog...")
+						});
+			};
+			
 			self.edit = function(id) {
 				console.log('id to be edited', id);
 				for (var i = 0; i < self.blogs.length; i++) {

@@ -13,15 +13,6 @@ app.config(function($routeProvider) {
 	})
 
 	/**
-	 * Admin related mapping
-	 */
-
-	.when('/manage_users', {
-		templateUrl : 'b_admin/manage_users.html',
-		controller : 'AdminController as ctrl'
-	})
-
-	/**
 	 * User login and register mapping
 	 */
 
@@ -155,7 +146,7 @@ app.config(function($routeProvider) {
 		$rootScope.$on('$locationChangeStart', function(event, next, current) {
 			console.log("--> $rootScope.$on <--");
 			// redirect to login page if try to access a restricted page
-			var restrictedPage = $.inArray($location.path(), [ '/', '/login',
+			var restrictedPage = $.inArray($location.path(), [ '/', '/login', '/logout',
 					'/register', '/list_blog', '/view_blog', '/about',
 					'/event', '/list_forum', '/view_forum', '/search_job',
 					'/view_job_details', '/search_job' ]) === -1;

@@ -8,4 +8,7 @@ app.controller('AdminController', [
 		function($scope, AdminService, $location, $rootScope) {
         	console.log("AdminController...");
         	
+        	var self = this;
+        	
+        	
 		} ]);

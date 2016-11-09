@@ -13,15 +13,15 @@
 							<form ng-submit="ctrl.submit()" name="myForm"
 								class="form-horizontal">
 								<div class="one">
-									<input type="text" name="title" required
+									<input type="text" name="title" required pattern=".{5,50}"
 										placeholder="Title of the Blog" ng-model="ctrl.blog.title">
 								</div>
 								<div class="one">
-									<input type="text" name="reason" required
+									<input type="text" name="reason" required pattern=".{5,100}"
 										placeholder="Why this blog ?"  ng-model="ctrl.blog.reason" >
 								</div>
 								<div class="one">
-									<textarea type="text" name="content" required
+									<textarea type="text" name="content" required pattern=".{50,1000}"
 										placeholder="Content of the Blog..." ng-model="ctrl.blog.content" ></textarea>
 								</div>
 								<div>

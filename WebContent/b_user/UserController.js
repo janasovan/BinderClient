@@ -11,18 +11,18 @@ app.controller('UserController', [
 			console.log("UserController....")
 			var self = this;
 			self.user = {
-				"errorCode": '',
-				"errorMessage": '',
-				"id": '',
-				"name": '',
-				"password": '',
-				"gender": '',
-				"email": '',
-				"phone": '',
-				"role": '',
-				"isOnline": '',
-				"image": '',
-				"photos": ''
+				errorCode: '',
+				errorMessage: '',
+				id: '',
+				name: '',
+				password: '',
+				gender: '',
+				email: '',
+				phone: '',
+				role: '',
+				isOnline: '',
+				image: '',
+				photos: ''
 			};
 			self.users = [];
 
@@ -63,11 +63,6 @@ app.controller('UserController', [
 						self.user.password = "";
 					} else {
 						console.log("Valid Credentials. Navigating to home page.");
-						/*$rootScope.currentUser = {
-								name : self.user.name,
-								id : self.user.id,
-								role : self.user.role,
-						};*/
 						$http.defaults.headers.common['Authorization'] = 'Basic' + $rootScope.currentUser;
 						$cookieStore.put('currentUser', $rootScope.currentUser);
 						$location.path('/');
@@ -79,11 +74,12 @@ app.controller('UserController', [
 			};
 			
 			self.logout = function() {
-				console.log("--> UserController : calling logout function.");
+				console.log("--> UserController : calling logout method.");
 				$rootScope.currentUser = {};
 				$cookieStore.remove('currentUser');
-				UserService.logout()
+				UserService.logout();
 				console.log("-->UserController : User Logged out.");
+				$location.path('/');
 			}
 
 			self.deleteUser = function(id) {

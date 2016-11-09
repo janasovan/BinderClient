@@ -17,7 +17,7 @@
 
 <body>
 	<!-- ---------------------- navbar start -------------------------->
-	<div class="container navigation">
+	<div class="container navigation"  ng-controller="UserController as ctrl">
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -37,7 +37,16 @@
 				<nav class="link-effect-12" id="link-effect-12">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="#/"><span>Home</span></a></li>
-						<li><a class="dropdown-toggle" data-toggle="dropdown">Job<span
+						
+						<!-- <<<<<<<<<< Job >>>>>>>>>> -->
+						
+						<li ng-show="currentUser==''"><a class="dropdown-toggle" data-toggle="dropdown">Job<span
+								class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#/search_job"><span>Search Job</span></a></li>
+							</ul>
+						</li>
+						<li ng-hide="currentUser==''"><a class="dropdown-toggle" data-toggle="dropdown">Job<span
 								class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="#/post_job"><span>Post Job</span></a></li>
@@ -45,47 +54,66 @@
 								<li><a href="#/view_applied_jobs"><span>Job Applied</span></a></li>
 							</ul>
 						</li>
+											
+						<!-- <<<<<<<<<< Event >>>>>>>>>> -->
+						
 						<li><a href="#/event"><span>Event</span></a></li>
-						<li><a class="dropdown-toggle" data-toggle="dropdown">Blog<span
+						
+						<!-- <<<<<<<<<< Blog >>>>>>>>>> -->
+						
+						<li ng-show="currentUser==''"><a class="dropdown-toggle" data-toggle="dropdown">Blog<span
+								class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#/list_blog"><span>Show All Blogs</span></a></li>
+							</ul>
+						</li>
+						<li ng-hide="currentUser==''"><a class="dropdown-toggle" data-toggle="dropdown">Blog<span
 								class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="#/create_blog"><span>Add New Blog</span></a></li>
 								<li><a href="#/list_blog"><span>Show All Blogs</span></a></li>
-								<!-- <li><a href="#/view_blog"><span>View Blog</span></a></li> -->
 							</ul>
 						</li>
-						<li><a class="dropdown-toggle" data-toggle="dropdown">Forum<span
+						
+						<!-- <<<<<<<<<< Forum >>>>>>>>>> -->
+						
+						<li ng-show="currentUser==''"><a class="dropdown-toggle" data-toggle="dropdown">Forum<span
+								class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#/list_forum"><span>Show All Forums</span></a></li>
+							</ul>
+						</li>
+						<li ng-hide="currentUser==''"><a class="dropdown-toggle" data-toggle="dropdown">Forum<span
 								class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="#/create_forum"><span>Add New Forum</span></a></li>
 								<li><a href="#/list_forum"><span>Show All Forums</span></a></li>
-								<!-- <li><a href="#/view_forum"><span>View Forum</span></a></li> -->
 							</ul>
 						</li>
-						<li><a class="dropdown-toggle" data-toggle="dropdown">Friend<span
+						
+						<!-- <<<<<<<<<< Friend >>>>>>>>>> -->
+						
+						<li ng-hide="currentUser==''"><a class="dropdown-toggle" data-toggle="dropdown">Friend<span
 								class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<!-- <li><a href="#/add_friend"><span>Add New Friend</span></a></li> -->
 								<li><a href="#/search_friend"><span>Search Friends</span></a></li>
 								<li><a href="#/view_friend"><span>View Friends</span></a></li>
 							</ul>
 						</li>
-						<!-- <li><a href="#/chat"><span>Chat</span></a></li> -->
+						
+						<!-- <<<<<<<<<< About >>>>>>>>>> -->
+						
 						<li><a href="#/about"><span>About</span></a></li>
-					<div ng-controller="UserController as ctrl">
-
-					<div class="floatright" ng-show="currentUser==''">	
-						<li><a class="dropdown-toggle" data-toggle="dropdown">Sign In<span class="caret"></span></a>
+						
+						<!-- <<<<<<<<<< Sign-In >>>>>>>>>> -->
+						
+						<li class="floatright" ng-show="currentUser==''"><a class="dropdown-toggle" data-toggle="dropdown">Sign In<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="#/login"><span>Sign In</span></a></li>
 								<li><a href="#/register"><span>Sign Up</span></a></li>
 							</ul>
 						</li>
-					</div>
-					<div class="floatright" ng-hide="currentUser==''">	
-						<li><a class="fa fa-sign-out" href="#/logout">Logout</a></li>
-					</div>
-					</div>
+						<li class="floatright" ng-hide="currentUser==''"><a href="#/logout" ng-click="ctrl.logout()">Logout</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -108,7 +136,7 @@
 			<div class="footer-bottom">
 				<div class="footer-bottom-left">
 					<p>
-						@2016. <a href="#">Binder.</a>Copyright by niitstudent_sovanjana NIIT Ltd.
+						@2016. <a href="#/">Binder.</a>Copyright by niitstudent_sovanjana NIIT Ltd.
 					</p>
 				</div>
 			</div>
@@ -124,6 +152,8 @@
 	<script src="resources/js/angular-route.min.js"></script>
 	<script src="resources/js/jquery-1.11.0.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/sockjs.js"></script>
+	<script src="resources/js/stomp.js"></script>
 
 	<!-- modulewise custom javascript -->
 	<script src="resources/js/app.js"></script>
@@ -141,10 +171,6 @@
 	<!-- friend related js files -->
 	<script src="b_friend/FriendController.js"></script>
 	<script src="b_friend/FriendService.js"></script>
-
-	<!-- admin related js files -->
-	<script src="b_admin/AdminController.js"></script>
-	<script src="b_admin/AdminService.js"></script>
 
 	<!-- job related js files -->
 	<script src="b_job/JobController.js"></script>

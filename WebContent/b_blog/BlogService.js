@@ -8,6 +8,7 @@ app.factory('BlogService', ['$http', '$q', '$rootScope',
 				return {
 				
 				getSelectedBlog : function(id) {
+					console.log("-->BlogService : calling getSelectedBlog() method : " + id);
 					return $http
 								.get(BASE_URL+'/blog/'+ id)
 								.then(function(response) {
@@ -22,6 +23,19 @@ app.factory('BlogService', ['$http', '$q', '$rootScope',
 				
 				fetchAllBlogs : function() {
 					console.log("--> BlogService : calling 'fetchAllBlogs' method.");
+					return $http
+								.get(BASE_URL + '/blogs')
+								.then(function(response) {
+									return response.data;
+								}, 
+								function(errResponse) {
+									console.error('Error while fetching Blogs');
+									return $q.reject(errResponse);
+								});
+				},
+				
+				fetchAllApprovedBlogs : function() {
+					console.log("--> BlogService : calling 'fetchAllApprovedBlogs' method.");
 					return $http
 								.get(BASE_URL + '/blogs')
 								.then(function(response) {
@@ -68,7 +82,33 @@ app.factory('BlogService', ['$http', '$q', '$rootScope',
 									console.log('Error while deleting Blog');
 									return $q.reject(errResponse);
 								});
+				},
+				
+				approveBlog : function(blog, id) {
+					console.log("-->BlogService : calling approveBlog() method : getting blog with id : " + id);
+					return $http
+								.put(BASE_URL+'/approveBlog/'+ id, blog)
+								.then(function(response) {
+									return response.data;
+								},
+								function(errResponse) {
+									console.log("Error while approving Blog");
+									return $q.reject(errResponse);
+								});
+				},
+				
+				rejectBlog : function(blog, id) {
+					console.log("-->BlogService : calling rejectBlog() method : getting blog with id : " + id);
+					return $http
+								.put(BASE_URL+'/rejectBlog/'+ id, blog)
+								.then(function(response) {
+									return response.data;
+								},
+								function(errResponse) {
+									console.log("Error while approving Blog");
+									return $q.reject(errResponse);
+								});
 				}
 				
 			};
-		} ]);
+		}]);

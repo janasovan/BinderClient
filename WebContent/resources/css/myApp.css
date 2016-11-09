@@ -49,7 +49,7 @@ html,
 }
 
 .navbar-nav {
-	margin: 1.5em 0 0;
+	margin: 20px 5px 0px 0;
 	float: right;
 }
 
@@ -58,8 +58,9 @@ html,
 }
 
 nav.navbar.navbar-default.navbar-fixed-top {
-	background: rgba(255, 255, 255, 0);
-	box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+	background: rgba(255, 255, 255, 0.75);
+    box-shadow: inset 0 0 16px rgba(0,0,0,.5);
+    height: 95px;
 }
 
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus
@@ -373,7 +374,7 @@ a.navbar-brand {
 a,
 a:focus,
 a:hover {
-  color: black;
+  /* color: black; */
 }
 /*
  * Custom default button 
@@ -645,6 +646,11 @@ strong {
 }
 .blog-list-font{
 	font-size: x-large;
+    margin-bottom: 10px;
+}
+.panel.panel-default{
+	background-color: rgba(109, 109, 109, 0.14);
+    padding: 5px;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ /view_blog ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
