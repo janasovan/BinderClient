@@ -7,33 +7,33 @@ app.controller('FriendController', [ 'FriendService', 'UserService', '$scope',
 
 			var self = this;
 			self.friend = {
-				"id" : '',
-				"userId" : '',
-				"friendId" : '',
-				"status" : ''
+				id : '',
+				userId : '',
+				friendId : '',
+				status : ''
 			};
 			self.friends = [];
 
 			self.user = {
-				"errorCode" : '',
-				"errorMessage" : '',
-				"id" : '',
-				"name" : '',
-				"password" : '',
-				"gender" : '',
-				"email" : '',
-				"phone" : '',
-				"role" : '',
-				"isOnline" : '',
-				"image" : '',
-				"photos" : ''
+				errorCode : '',
+				errorMessage : '',
+				id : '',
+				name : '',
+				password : '',
+				gender : '',
+				email : '',
+				phone : '',
+				role : '',
+				isOnline : '',
+				image : '',
+				photos : ''
 			};
 			self.users = [];
 			
 			self.sendFriendRequest = sendFriendRequest
 			
 			function sendFriendRequest(friendId) {
-				console.log("--> sendFriendRequest : "+friendId);
+				console.log("--> FriendController : calling 'sendFriendRequest' method.");
 				FriendService.sendFriendRequest(friendId).then(
 						function(d) {
 							self.friend = d;
@@ -46,7 +46,7 @@ app.controller('FriendController', [ 'FriendService', 'UserService', '$scope',
 			};
 			
 			self.getMyFriends = function() {
-				console.log("--> getMyFriends");
+				console.log("--> FriendController : calling 'getMyFriends' method.");
 				FriendService.getMyFriends().then(
 						function(d) {
 							self.friends = d;
@@ -59,7 +59,7 @@ app.controller('FriendController', [ 'FriendService', 'UserService', '$scope',
 			};
 			
 			self.updateFriendRequest = function(friend, id) {
-				console.log("--> updateFriendRequest");
+				console.log("--> FriendController : calling 'updateFriendRequest' method.");
 				FriendService.updateFriendRequest(friend.id).then(self.fetchAllFriends,
 						function(errResponse) {
 							console.error("Error while updating friend.");
@@ -68,10 +68,10 @@ app.controller('FriendController', [ 'FriendService', 'UserService', '$scope',
 			};
 			
 			self.fetchAllUsers = function() {
-				console.log("--> fetchAllUsers");
+				console.log("--> FriendController : calling 'fetchAllUsers' method.");
 				UserService.fetchAllUsers().then(
-						function() {
-							self.users = d;
+						function(d) {
+							self.friends = d;
 						},
 						function(errResponse) {
 							console.error("Error while fetching users.");

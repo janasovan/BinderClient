@@ -1,7 +1,7 @@
 var app = angular.module('myApp', [ 'ngRoute', 'ngCookies' ]);
 
 app.config(function($routeProvider) {
-	
+
 	$routeProvider
 
 	/**
@@ -68,13 +68,13 @@ app.config(function($routeProvider) {
 	 * Friend related mapping
 	 */
 
-	.when('/add_friend', {
-		templateUrl : 'b_friend/add_friend.html',
+	.when('/search_friend', {
+		templateUrl : 'b_friend/search_friend.html',
 		controller : 'FriendController as ctrl'
 	})
 
-	.when('/search_friend', {
-		templateUrl : 'b_friend/search_friend.html',
+	.when('/view_friend_list', {
+		templateUrl : 'b_friend/view_friend_list.html',
 		controller : 'FriendController as ctrl'
 	})
 
@@ -140,32 +140,39 @@ app.config(function($routeProvider) {
 		redirectTo : '/'
 	});
 });
-	app.run(function($rootScope, $location, $cookieStore, $http) {
-		console.log("--> app : entered app.run");
-		
-		$rootScope.$on('$locationChangeStart', function(event, next, current) {
-			console.log("--> $rootScope.$on <--");
-			// redirect to login page if try to access a restricted page
-			var restrictedPage = $.inArray($location.path(), [ '/', '/login', '/logout',
-					'/register', '/list_blog', '/view_blog', '/about',
-					'/event', '/list_forum', '/view_forum', '/search_job',
-					'/view_job_details', '/search_job' ]) === -1;
-			
-			console.log("restrictedPage : " + restrictedPage);
-			var loggedIn = $rootScope.currentUser.id;
-			
-			console.log("loggedIn : " + loggedIn);
-			if (restrictedPage && !loggedIn) {
-				console.log("Navigating to login page.");
-				$location.path('/login');
-			}
-		});
+app.run(function($rootScope, $location, $cookieStore, $http) {
+	console.log("--> app : entered app.run");
 
-		// keep user logged in after page refresh...
-		/*$rootScope.currentUser = $cookieStore.get('currentUser') || {};
-		if ($rootScope.currentUser) {
-			$http.defaults.header.common['Authorization'] = 'Basic'
-					+ $rootScope.currentUser;
-		}*/
+	$rootScope.$on('$locationChangeStart', function(event, next, current) {
+		console.log("--> $rootScope.$on <--");
+		// redirect to login page if try to access a restricted page
+		var restrictedPage = $.inArray($location.path(), [ '/', 
+		                                                   '/login', 
+		                                                   '/logout', 
+		                                                   '/register', 
+		                                                   '/list_blog', 
+		                                                   '/view_blog', 
+		                                                   '/about', 
+		                                                   '/event', 
+		                                                   '/list_forum', 
+		                                                   '/view_forum', 
+		                                                   '/search_job', 
+		                                                   '/view_job_details' ]) === -1;
+
+		console.log("restrictedPage : " + restrictedPage);
+		var loggedIn = $rootScope.currentUser.id;
+
+		console.log("loggedIn : " + loggedIn);
+		if (restrictedPage && !loggedIn) {
+			console.log("Navigating to login page.");
+			$location.path('/login');
+		}
 	});
 
+	// keep user logged in after page refresh...
+	/*
+	 * $rootScope.currentUser = $cookieStore.get('currentUser') || {}; if
+	 * ($rootScope.currentUser) { $http.defaults.header.common['Authorization'] =
+	 * 'Basic' + $rootScope.currentUser; }
+	 */
+});
