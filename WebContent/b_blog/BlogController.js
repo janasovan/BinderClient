@@ -22,65 +22,62 @@ app.controller('BlogController', [
 			}
 			self.blogs = [];
 
-			/**
-			 * method definition.....
-			 */
-
 			self.getSelectedBlog = function(id) {
 				console.log("-->BlogController : calling getSelectedBlog method : getting blog with id : " + id);
-				BlogService.getSelectedBlog(id).then(function(d) {
-					self.blog = d;
-					$location.path('/view_blog');
-				}, function(errResponse) {
-					console.error('Error while fetching Blog...');
-				});
+				BlogService.getSelectedBlog(id).then(
+						function(d) {
+							self.blog = d;
+							$location.path('/view_blog');
+						}, 
+						function(errResponse) {
+							console.error('Error while fetching Blog...');
+						});
 			};
 
 			self.fetchAllBlogs = function() {
 				console.log("--> BlogController : calling fetchAllBlogs method.");
-				BlogService.fetchAllBlogs().then(function(d) {
-					self.blogs = d;
-				}, function(errResponse) {
-					console.error('Error while fetching Blogs...');
-				});
+				BlogService.fetchAllBlogs().then(
+						function(d) {
+							self.blogs = d;
+						}, function(errResponse) {
+							console.error('Error while fetching Blogs...');
+						});
 			};
 			
 			self.createBlog = function(blog) {
 				console.log("--> BlogController : calling createBlog method.");
-				BlogService.createBlog(blog).then(self.fetchAllBlogs,
+				BlogService.createBlog(blog).then(
+						function(d) {
+							self.blogs = d;
+							alert('Blog Created Successfully...')
+						},
 						function(errResponse) {
 							console.error('Error while creating blog...');
 						});
 			};
 
 			self.updateBlog = function(blog, id) {
-				BlogService.updateBlog(blog).then(self.fetchAllBlogs,
+				console.log("-->BlogController : calling updateBlog method.");
+				BlogService.updateBlog(blog, id).then(
+						self.fetchAllBlogs,
 						function(errResponse) {
 							console.error('Error while updating blog...')
 						});
 			};
 
 			self.deleteBlog = function(id) {
-				BlogService.deleteBlog(id).then(self.fetchAllBlogs,
+				console.log("-->BlogController : calling deleteBlog method.");
+				BlogService.deleteBlog(id).then(
+						self.fetchAllBlogs,
 						function(errResponse) {
 							console.error('Error while deleting blog...')
 						});
 			};
-
-			self.fetchAllBlogs();
-
-			self.submit = function() {
-				{
-					console.log("--> BlogController : calling submit() method.", self.blog);
-					self.createBlog(self.blog);
-					console.log('Saving new Blog', self.blog);
-				}
-				self.reset();
-			};
 			
 			self.approveBlog = function(blog, id) {
 				console.log("-->BlogController : calling approveBlog() method : getting blog with id : " + id);
-				BlogService.approveBlog(blog, id).then(self.fetchAllBlogs,
+				BlogService.approveBlog(blog, id).then(
+						self.fetchAllBlogs,
 						function(errResponse) {
 							console.error("Error while approving blog...")
 						});
@@ -88,14 +85,28 @@ app.controller('BlogController', [
 
 			self.rejectBlog = function(blog, id) {
 				console.log("-->BlogController : calling rejectBlog() method : getting blog with id : " + id);
-				BlogService.rejectBlog(blog, id).then(self.fetchAllBlogs,
+				BlogService.rejectBlog(blog, id).then(
+						self.fetchAllBlogs,
 						function(errResponse) {
 							console.error("Error while rejecting blog...")
 						});
 			};
+
+			self.fetchAllBlogs();
+
+	/*****************************************************************************/
+			
+			self.submit = function() {
+				{
+					console.log("--> BlogController : calling submit() method.", self.blog);
+					self.createBlog(self.blog);
+					console.log('Saving new Blog', self.blog);
+				}
+				self.reset();
+			};			
 			
 			self.edit = function(id) {
-				console.log('id to be edited', id);
+				console.log("id to be edited : "+id);
 				for (var i = 0; i < self.blogs.length; i++) {
 					if (self.blogs[i].id === id) {
 						self.blog = angular.copy(self.blogs[i]);

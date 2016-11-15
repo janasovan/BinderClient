@@ -1,14 +1,26 @@
 'use strict';
 
-app.factory('FriendService', [
-		'$http',
-		'$q',
-		'$rootScope',
+app.factory('FriendService', ['$http', '$q', '$rootScope',
 		function($http, $q, $rootScope) {
 			console.log("FriendService...");
 
 			var BASE_URL = 'http://localhost:8081/Binder/user'
 			return {
+				
+				getSelectedFriend : function(id) {
+					console.log("-->FriendService : calling 'getSelectedFriend' method with id : " + id);
+					return $http
+								.get(BASE_URL+'/friend/'+ id)
+								.then(function(response) {
+									$rootScope.selectedFriend = response.data;
+									return response.data;
+								},
+								function(errResponse) {
+									console.error("Error while fetching friend.");
+									return $q.reject(errResponse);
+								});
+				},
+				
 				getMyFriends : function() {
 					console.log("--> FriendService : calling 'getMyFriends' method.");
 					return $http.get(BASE_URL + '/myFriends').then(
@@ -16,6 +28,18 @@ app.factory('FriendService', [
 								return response.data;
 							}, function(errResponse) {
 								console.error("-->FriendService : Error while fetching all my friends.)");
+								return $q.reject(errResponse);
+							});
+				},
+				
+				getNewFriendRequests : function() {
+					console.log("--> FriendService : calling 'getNewFriendRequests' method.");
+					return $http.get(BASE_URL+'/newFriendRequests').then(
+							function(response) {
+								return response.data;
+							},
+							function(errResponse) {
+								console.error("-->FriendService : Error while fetching new friend requests.");
 								return $q.reject(errResponse);
 							});
 				},
@@ -29,20 +53,40 @@ app.factory('FriendService', [
 							function(errResponse) {
 								console.error("-->FriendService : Error while sending friend request.")
 								return $q.reject(errResponse);
-							}
-						);
+							});
 				},
 				
-				updateFriendRequest : function(friend, id) {
-					console.log("--> FriendService : calling 'updateFriendRequest' method.");
+				acceptFriend : function(friend, id) {
+					console.log("--> FriendService : calling 'acceptFriend' method.");
+					return $http.put(BASE_URL+'/acceptFriend/'+friend.id).then(
+							function(response) {
+								return response.data;
+							},
+							function(errResponse) {
+								console.error("-->FriendService : Error while unFriend existing friend.")
+							});
+				},
+				
+				rejectFriend : function(friend, id) {
+					console.log("--> FriendService : calling 'rejectFriend' method.");
+					return $http.put(BASE_URL+'/rejectFriend/'+friend.id).then(
+							function(response) {
+								return response.data;
+							},
+							function(errResponse) {
+								console.error("-->FriendService : Error while unFriend existing friend.")
+							});
+				},
+				
+				unFriend : function(friend, id) {
+					console.log("--> FriendService : calling 'unFriend' method.");
 					return $http.put(BASE_URL+'/unFriend/'+friend.id).then(
 							function(response) {
 								return response.data;
 							},
 							function(errResponse) {
 								console.error("-->FriendService : Error while unFriend existing friend.")
-							}
-						);
-				}				
+							});
+				}
 			};
-		} ]);
+		}]);

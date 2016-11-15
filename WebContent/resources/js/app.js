@@ -55,7 +55,7 @@ app.config(function($routeProvider) {
 	})
 
 	.when('/list_forum', {
-		templateUrl : 'b_forum/list_forum.html',
+		templateUrl : 'b_forum/list_forums.html',
 		controller : 'ForumController as ctrl'
 	})
 
@@ -127,11 +127,21 @@ app.config(function($routeProvider) {
 	/**
 	 * Event related mapping
 	 */
-	.when('/event', {
-		templateUrl : 'b_event/event.html',
+	.when('/list_event', {
+		templateUrl : 'b_event/list_events.html',
 		controller : 'EventController as ctrl'
 	})
 
+	.when('/create_event', {
+		templateUrl : 'b_event/create_event.html',
+		controller : 'EventController as ctrl'
+	})
+	
+	.when('/view_event', {
+		templateUrl : 'b_event/view_event.html',
+		controller : 'EventController as ctrl'
+	})
+	
 	/**
 	 * If anything goes wrong then this mapping will handle the request...
 	 */
@@ -153,7 +163,8 @@ app.run(function($rootScope, $location, $cookieStore, $http) {
 		                                                   '/list_blog', 
 		                                                   '/view_blog', 
 		                                                   '/about', 
-		                                                   '/event', 
+		                                                   '/list_event',
+		                                                   '/view_event', 
 		                                                   '/list_forum', 
 		                                                   '/view_forum', 
 		                                                   '/search_job', 

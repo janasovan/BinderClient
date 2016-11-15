@@ -8,7 +8,7 @@ app.factory('BlogService', ['$http', '$q', '$rootScope',
 				return {
 				
 				getSelectedBlog : function(id) {
-					console.log("-->BlogService : calling getSelectedBlog() method : " + id);
+					console.log("-->BlogService : calling getSelectedBlog() method with id : " + id);
 					return $http
 								.get(BASE_URL+'/blog/'+ id)
 								.then(function(response) {
@@ -61,6 +61,7 @@ app.factory('BlogService', ['$http', '$q', '$rootScope',
 				},
 				
 				updateBlog : function(blog, id) {
+					console.log("--> BlogService : calling 'updateBlog' method with id : "+id);
 					return $http
 								.put(BASE_URL+'/blog/'+id)
 								.then(function(response) {
@@ -73,6 +74,7 @@ app.factory('BlogService', ['$http', '$q', '$rootScope',
 				},
 				
 				deleteBlog : function(id) {
+					console.log("--> BlogService : calling 'updateBlog' method with id : "+id);
 					return $http
 								.delete(BASE_URL+'/blog/'+id)
 								.then(function(response) {

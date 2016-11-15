@@ -8,9 +8,11 @@ app.factory('ForumService', ['$http', '$q', '$rootScope',
 				return {
 				
 				getSelectedForum : function(id) {
+					console.log("-->ForumService : calling getSelectedForum() method with id : " + id);
 					return $http
 								.get(BASE_URL+'/forum/'+ id)
 								.then(function(response) {
+									$rootScope.selectedForum = response.data;
 									return response.data;
 								},
 								function(errResponse) {
@@ -20,6 +22,7 @@ app.factory('ForumService', ['$http', '$q', '$rootScope',
 				},
 				
 				fetchAllForums : function() {
+					console.log("-->ForumService : calling 'fetchAllForums' method.");
 					return $http
 								.get(BASE_URL + '/forums')
 								.then(function(response) {
@@ -32,6 +35,7 @@ app.factory('ForumService', ['$http', '$q', '$rootScope',
 				},
 
 				createForum : function(forum) {
+					console.log("-->ForumService : calling 'createForum' method.");
 					return $http
 								.post(BASE_URL + '/forum/', forum)
 								.then(function(response) {
@@ -44,6 +48,7 @@ app.factory('ForumService', ['$http', '$q', '$rootScope',
 				},
 				
 				updateForum : function(forum, id) {
+					console.log("-->ForumService : calling 'updateForum' method with id : "+id);
 					return $http
 								.put(BASE_URL+'/forum/'+id)
 								.then(function(response) {
@@ -56,6 +61,7 @@ app.factory('ForumService', ['$http', '$q', '$rootScope',
 				},
 				
 				deleteForum : function(id) {
+					console.log("-->ForumService : calling 'deleteForum' method with id : "+id);
 					return $http
 								.delete(BASE_URL+'/forum/'+id)
 								.then(function(response) {
