@@ -168,7 +168,8 @@ app.run(function($rootScope, $location, $cookieStore, $http) {
 		                                                   '/list_forum', 
 		                                                   '/view_forum', 
 		                                                   '/search_job', 
-		                                                   '/view_job_details' ]) === -1;
+		                                                   '/view_job_details',
+		                                                   '/chat']) === -1;
 
 		console.log("restrictedPage : " + restrictedPage);
 		var loggedIn = $rootScope.currentUser.id;

@@ -591,7 +591,7 @@ textarea {
 	width: 100%;
 }
 .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2 {
-	background-color: rgba(0, 0, 0, 0.2);
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.54),white,rgba(0, 0, 0, 0.54));
 	padding: 2em 2em 3em 2em;
 }
 /* ~~~~~~~~~~~~~ registration and login page end ~~~~~~~~~~~~~ */
@@ -691,8 +691,23 @@ div#forum-page {
     margin-bottom: 5em;
 }
 .comment-zone{
-	background-color: white;
+	background: linear-gradient(to right, rgba(140, 140, 140, 0.35) , rgba(255, 255, 255, 0));
     margin-top: 3em;
+}
+.col-xs-10.recent-comment-grid-right {
+    margin: 7px 15px;
+        background: linear-gradient(to right, rgba(53, 53, 53, 0.35), rgba(255, 255, 255, 0));
+}
+#forum-area{
+	background: linear-gradient(to right, rgba(140, 140, 140, 0.35) , rgba(255, 255, 255, 0));
+	padding: 1em;
+}
+h1#forum-name {
+    margin-bottom: 1em;
+}
+h1#forum-name {
+    margin-bottom: 1em;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.15),rgba(255, 255, 255, 0));
 }
 
 
@@ -703,10 +718,101 @@ div#forum-page {
 
 
 
-
-
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ /Forum ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Stylist Borders ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.frameone {
+    border-style: groove;
+    border-color: #ececec;
+    border-width: 12px;
+}
+.simple{
+border: 1px solid #4C3C1B;
+padding: 5px;
+width: 300px;
+background-color: #EFEECB;
+}
+.polarid{
+border: 1px solid #4C3C1B;
+padding: 8px 80px 8px 8px;
+width: 300px;
+}
+.polar{
+border: 1px solid #4C3C1B;
+padding: 8px 8px 80px 8px;
+width: 300px;
+}
+.frame{
+border-style: double;
+padding: 14px;
+background-color: #d1e7f4;
+}
+.inset{
+border-style: 18px  inset  #d2e3ed
+}
+.outset{
+border-style: 18px  outset  #d2e3ed;
+}
+.ridge{
+border-style: ridge;
+border-color: red;
+border-width: 14px;
+}
+.abovebottom{
+border-top-style:double;
+border-bottom-style:double;
+padding-top:5px;
+padding-bottom:5px;
+border-top-color:#7cbfcf;
+border-bottom-color:#7cbfcf;
+border-top-width:8px;
+border-bottom-width:8px;
+}
+.off {
+width: 300px;
+padding: 0px 6px 6px 0px;
+background-color: #9FB2C1;
+border-top-width: 8px;
+border-top-style:ridge;
+border-right-width: 5px;
+border-bottom-width: 5px;
+border-left-width: 2px;
+border-style: solid;
+border-color: #082F70;
+}
+.Patternd{
+padding: 15px;
+background-image: url(patternd.jpg);
+}
+.myCSS3id{
+border: 5px solid #111;
+-moz-box-shadow: 35px 35px 7px #999999;
+-moz-border-bottom-right-radius: 15px;
+-moz-border-radius:25px;
+padding: 15px 25px;
+height: inherit;
+width: 300px;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ /Stylist Borders ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.rounded-textbox {
+	border:2px solid #456879;
+	border-radius:10px;
+	height: 22px;
+	width: 230px;
+}
+.gradient-textbox {
+	width: 221px;
+	background: transparent url('images/bg.jpg') no-repeat;
+	color : #747862;
+	height:20px;
+	border:0;
+	padding:4px 8px;
+	margin-bottom:0px;
+}
+
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~ sticky & floating footer ~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -729,4 +835,55 @@ ul, label {
 }
 body a:hover {
 	text-decoration: none;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.box {
+  position: relative;
+  background: #c7c7c7;
+  width: 375px;
+}
+.ribbon {
+  position: absolute;
+  left: -5px; top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px; height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#B6BAC9 0%, #808080 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; left: -21px;
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #808080;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #808080;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #808080;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #808080;
 }

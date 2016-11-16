@@ -18,6 +18,17 @@ app.controller('ForumController', [
 				errorMessage : ''
 			}
 			self.forums = [];
+			
+			self.forumComment = {
+				id : '',
+				forumId : '',
+				comment : '',
+				userId : '',
+				commentDate : '',
+				errorCode : '',
+				errorMessage : ''
+			}			
+			self.forumComments = [];
 
 			self.getSelectedForum = function(id) {
 				console.log("-->ForumController : calling getSelectedForum method with id : " + id);
@@ -41,6 +52,17 @@ app.controller('ForumController', [
 			};
 			
 			self.fetchAllForums();
+			
+			self.fetchAllForumComments = function() {
+				console.log("-->ForumController : calling fetchAllForumComments method.");
+				ForumService.fetchAllForumComments().then(function(d) {
+					self.forumComments = d;
+				}, function(errResponse) {
+					console.error('Error while fetching ForumComments...');
+				});
+			};
+			
+			self.fetchAllForumComments();
 
 			self.createForum = function(forum) {
 				console.log("-->ForumController : calling createForum method.");
@@ -50,6 +72,16 @@ app.controller('ForumController', [
 				},
 						function(errResponse) {
 							console.error('Error while creating forum...');
+						});
+			};
+			
+			self.createForumComment = function(forumComment) {
+				console.log("-->ForumController : calling createForumComment method.");
+				ForumService.createForumComment(forumComment).then(function(d) {
+					self.forumComment = d;
+				},
+						function(errResponse) {
+							console.error('Error while creating forumComment...');
 						});
 			};
 
@@ -79,6 +111,15 @@ app.controller('ForumController', [
 				}
 				self.reset();
 			};
+			
+			self.comment = function() {
+				{
+					console.log("-->ForumController : calling comment() method.", self.forumComment);
+					self.createForumComment(self.forumComment);
+					console.log("Saving new Comment", self.forumComment);
+				}
+				self.resetComment();
+			}
 
 			self.edit = function(id) {
 				console.log('id to be edited', id);
@@ -89,6 +130,20 @@ app.controller('ForumController', [
 					}
 				}
 			};
+			
+			/*self.isMatch = function() {
+				console.log("isMatch method calling...");
+				for(var j = 0; j < self.forums.length; j++){
+					for(var k = 0; k < self.forumComments.length; k++){
+						if(self.forums[j].id === self.forumComments[k].forumId){
+							return self.forumComment;
+						}
+						else {
+							return null;
+						}						
+					}					
+				}
+			},*/
 
 			self.remove = function(id) {
 				console.log('id to be deleted', id);
@@ -108,6 +163,20 @@ app.controller('ForumController', [
 						errorCode : '',
 						errorMessage : ''
 				};
+				$scope.myForm.$setPristine(); // reset form...
+			};
+			
+			self.resetComment = function() {
+				console.log('submit a new ForumComment', self.forumComment);
+				self.forumComment = {
+						id : '',
+						forumId : '',
+						comment : '',
+						userId : '',
+						commentDate : '',
+						errorCode : '',
+						errorMessage : ''
+					};
 				$scope.myForm.$setPristine(); // reset form...
 			};
 		} ]);

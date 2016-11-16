@@ -1,18 +1,18 @@
 <div id="forum-page">
       <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top: 2em;">
           <div class="col-md-8">
-            <h1 class="text-uppercase" id="forum-name"><a href="#">~~ Forum ~~</a></h1>
+            <h1 class="text-uppercase" id="forum-name"><a style="color: #efefef; text-decoration: none;">Forum</a></h1>
             <h4>Written By : {{selectedForum.userId}} &nbsp;&nbsp;   On {{selectedForum.postDate | date}}</h4>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-8" style="padding: 2em;">
             <div id="forum-area">
-              <!-- <h3 class="entry-title"><i class="fa fa-flag fa-fw">{{selectedForum.reason}}</i></h3> -->
               <p>{{selectedForum.description}}</p>
               <p class="author text-right">
-                <strong>Best regards</strong><br>
+                <strong>Best regards</strong>
+                <br>
                 <small>{{selectedForum.userId}}</small>
               </p>
             </div>
@@ -20,20 +20,15 @@
             
             <!-- forum-comment-area -->
             <div class="comment-zone">
-            <div class="recent-comment">	
-					<h3 style="float: left; text-decoration: underline; padding: 15px;">Recent <span>Comments</span></h3>
+            	<div class="recent-comment">	
+					<h3 style="float: left; padding: 15px;">Recent <span style="color: #337ab7;">Comments</span></h3>
 					<div class="recent-comment-grids">
 						<div class="recent-comment-grid">
-							<div class="col-xs-10 recent-comment-grid-right">
+							<div class="col-xs-10 recent-comment-grid-right" ng-repeat="forumComment in ctrl.forumComments">
 								<h4 style="padding: 9px;">
-								<a style="float: left;" href="#"><span style="color: black;">Comment By : </span>sovan001</a></h4>
-								<p style="padding: 2em;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-								Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-								nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-								reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-								pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-								culpa qui officia deserunt mollit anim id est laborum.</p>								
+									<a style="float: left;" href="#"><span style="color: black;">Comment By : </span>{{forumComment.userId}}</a>
+								</h4>
+								<p style="padding: 2em;">{{forumComment.comment}}</p>								
 							</div>							
 						</div>					
 					</div>
@@ -41,7 +36,7 @@
 				</div>
             
             	<div ng-hide="currentUser==''">
-            		<div class="">
+            		<div class="" style="padding: 1em;">
 						<fieldset>
 							<legend></legend>
 							<h3>Leave a <span style="color: #337ab7;">Comment</span></h3>
@@ -50,7 +45,7 @@
 									class="form-horizontal">
 									<div class="one">
 										<textarea type="text" required placeholder="Write your comment here..." 
-												ng-model="ctrl.forumcomment.comment" ></textarea>
+												ng-model="ctrl.forumComment.comment" ></textarea>
 									</div>
 									<div>
 										<input type="submit" class="btn btn-info kp-button floatright"
@@ -70,7 +65,8 @@
           
           
           
-          <div class="col-md-4">
+          <div class="col-md-4 box" style="transform: rotate(15deg);">
+          <div class="ribbon"><span>POPULAR</span></div>
             <div class="widget">
               <div class="minor-header"><h4><i class="fa fa-cubes fa-fw"></i> Other forums</h4></div>
               <div class="media">

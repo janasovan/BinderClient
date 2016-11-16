@@ -33,6 +33,19 @@ app.factory('ForumService', ['$http', '$q', '$rootScope',
 									return $q.reject(errResponse);
 								});
 				},
+				
+				fetchAllForumComments : function() {
+					console.log("-->ForumService : calling 'fetchAllForumComments' method.");
+					return $http
+								.get(BASE_URL + '/forumComments')
+								.then(function(response) {
+									return response.data;
+								}, 
+								function(errResponse) {
+									console.error('Error while fetching ForumComments');
+									return $q.reject(errResponse);
+								});
+				},
 
 				createForum : function(forum) {
 					console.log("-->ForumService : calling 'createForum' method.");
@@ -43,6 +56,19 @@ app.factory('ForumService', ['$http', '$q', '$rootScope',
 								}, 
 								function(errResponse) {
 									console.error('Error while creating forum');
+									return $q.reject(errResponse);
+								});
+				},
+				
+				createForumComment : function(forumComment) {
+					console.log("-->ForumService : calling 'createForumComment' method.");
+					return $http
+								.post(BASE_URL + '/forumComment/', forumComment)
+								.then(function(response) {
+									return response.data;
+								}, 
+								function(errResponse) {
+									console.error('Error while creating forumComment');
 									return $q.reject(errResponse);
 								});
 				},
