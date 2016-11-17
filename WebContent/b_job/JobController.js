@@ -13,7 +13,7 @@ app.controller('JobController', ['JobService', '$scope', '$location', '$rootScop
 			date : '', 
 			status : '', 
 			noOfApplicants : '',
-			errorCode : '', 
+			errorCode : '',
 			errorMessage : ''
 		};
 
@@ -104,7 +104,7 @@ app.controller('JobController', ['JobService', '$scope', '$location', '$rootScop
 		};
 
 		self.callForInterview = function(jobApplication, userId, jobId) {
-			console.log("-->JobController : calling 'callForInterview' method with userId : "+userId+" and jobId : "+jobId);
+			console.log("-->JobController : calling 'callForInterview' method with userId : "+ userId +" and jobId : "+ jobId);
 			//var jobId = $rootScope.selectedJob.id;
 			JobService
 						.callForInterview(jobApplication, userId, jobId)
@@ -141,7 +141,7 @@ app.controller('JobController', ['JobService', '$scope', '$location', '$rootScop
 						});
 		};
 
-		self.applyForJob = function(jobId) {
+		self.applyForJob = function(job) {
 			console.log("-->JobController : calling 'applyForJob' method.");
 			var currentUser = $rootScope.currentUser
 			if (typeof currentUser == 'undefined') {
@@ -150,7 +150,7 @@ app.controller('JobController', ['JobService', '$scope', '$location', '$rootScop
 				$location.path('/login');
 			};
 			JobService
-						.applyForJob(jobId)
+						.applyForJob(job)
 						.then(function(d) {
 							self.jobApplication = d;
 							alert("You have successfully applied for the job...")
@@ -171,7 +171,13 @@ app.controller('JobController', ['JobService', '$scope', '$location', '$rootScop
 			}
 			self.reset();
 		};
-
+		
+		self.apply = function() {
+			console.log("-->JobController : calling 'apply()' method.", self.job);
+			self.applyForJob(job);
+			console.log('Job applied successfully...', job);
+		};
+		
 		self.reset = function() {
 			console.log('submit a new job', self.job);
 			self.job = {

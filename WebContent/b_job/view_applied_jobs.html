@@ -10,13 +10,13 @@
 								ng-show="currentUser=='jobApplication.userId'" style="margin-bottom: 2em;">
 								<a>
 									<div class="one">
-										<label><span>Job ID : </span>{{job.id}}</label>
+										<label><span>Job ID : </span>{{selectedJob.id}}</label>
 									</div>
 									<div class="one">
-										<label><span>Company Name : </span>{{job.companyName}}</label>
+										<label><span>Company Name : </span>{{selectedJob.companyName}}</label>
 									</div> 	
 									<div class="one">
-										<label><span>Job Location : </span>{{job.location}}</label>
+										<label><span>Job Location : </span>{{selectedJob.location}}</label>
 									</div>
 									<div class="one">
 										<label ng-show="jobApplication.status=='A'">Job Status : Applied</label>
