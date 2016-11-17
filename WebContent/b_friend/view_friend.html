@@ -7,12 +7,12 @@
 					<div class="blog-list-font">
 						<div>
 							<div class="panel panel-default" ng-repeat="friend in ctrl.friends"
-								style="margin-bottom: 2em;">
+									style="margin-bottom: 2em;">
 								<a>
-									<div class="one">
+									<div class="one" ng-show="friend.userId==currentUser.id">
 										<label>{{friend.friendId}}</label>										
 									</div>
-									<div class="one">
+									<div class="one" ng-show="friend.userId!=currentUser.id">
 										<label>{{friend.userId}}</label>										
 									</div>
 									<div class="one" ng-show="friend.status=='A'">

@@ -76,8 +76,9 @@ app.factory('JobService', ['$http', '$q', '$rootScope',
 			getMyAppliedJobs : function() {
 				console.log("-->JobService : calling 'getMyAppliedJobs' method");
 				return $http
-							.get(BASE_URL+'/getMyAppliedJobs/')
+							.get(BASE_URL+'/getMyAppliedJobs')
 							.then(function(response) {
+								$rootScope.getAppliedJob = response.data;
 								return response.data;
 							},
 							function(errResponse) {

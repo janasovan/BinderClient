@@ -36,7 +36,7 @@ app.controller('FriendController', [ 'FriendService',
 			self.fetchAllUsers = function() {
 				console.log("--> FriendController : calling 'fetchAllUsers' method.");
 				UserService
-							.fetchAllUsers()
+							.searchForFriends()
 							.then(function(d) {
 								self.users = d;
 							},
@@ -94,6 +94,7 @@ app.controller('FriendController', [ 'FriendService',
 								.then(function(d) {
 									self.friend = d;
 									alert("Friend request sent successfully...")
+									self.fetchAllUsers();									
 								},
 								function(errResponse) {
 									console.error("Error while fetching friends.");

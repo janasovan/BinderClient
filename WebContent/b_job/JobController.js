@@ -91,7 +91,7 @@ app.controller('JobController', ['JobService', '$scope', '$location', '$rootScop
 						});
 		};
 		
-		self.listJobApplications;
+		self.listJobApplications();
 
 		self.getMyAppliedJobs = function() {
 			console.log("-->JobController : calling 'getMyAppliedJobs' method.");
@@ -102,6 +102,7 @@ app.controller('JobController', ['JobService', '$scope', '$location', '$rootScop
 							console.error('Error while fetching all applied jobs...');
 						});
 		};
+		self.getMyAppliedJobs();
 
 		self.callForInterview = function(jobApplication, userId, jobId) {
 			console.log("-->JobController : calling 'callForInterview' method with userId : "+ userId +" and jobId : "+ jobId);
