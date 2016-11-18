@@ -10,6 +10,7 @@
     };
     
     ChatService.receive().then(null, null, function(message) {
+    	alert('receiveMessage');
       $scope.messages.push(message);
     });
   });

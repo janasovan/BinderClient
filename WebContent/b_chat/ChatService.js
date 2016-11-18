@@ -17,6 +17,7 @@
     
     service.send = function(message) {
       var id = Math.floor(Math.random() * 1000000);
+      alert('sendMessage');
       socket.stomp.send(service.CHAT_BROKER, {
         priority: 9
       }, JSON.stringify({
@@ -27,28 +28,33 @@
     };
     
     var reconnect = function() {
+    	alert('reconnect');
       $timeout(function() {
         initialize();
       }, this.RECONNECT_TIMEOUT);
     };
     
     var getMessage = function(data) {
+    	alert('getMessage');
       var message = JSON.parse(data), out = {};
       out.message = message.message;
-      out.time = new Date(message.time);
+     // out.time = new Date(message.time);
          
       return out;
     };
     
     var startListener = function() {
+    	alert('startlistener');
       socket.stomp.subscribe(service.CHAT_TOPIC, function(data) {
         listener.notify(getMessage(data.body));
       });
     };
     
     var initialize = function() {
+    	alert('init');
       socket.client = new SockJS('/Binder/chat');
       socket.stomp = Stomp.over(socket.client);
+      alert('connect');
       socket.stomp.connect({}, startListener);
       socket.stomp.onclose = reconnect;
     };

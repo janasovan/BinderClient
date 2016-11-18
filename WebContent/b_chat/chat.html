@@ -10,10 +10,13 @@
 						<button ng-disabled="message.length > max || message.length === 0" >Send</button>
 					</div>
 				</form>
-				<p ng-repeat="message in messages | orderBy:'time':'true'" class="message">
+				<!-- <p ng-repeat="message in messages | orderBy:'time':'true'" class="message">
 					<time>{{message.dateTime | dateTime:'HH:mm'}}</time>
 					<span ng-class="{self: message.self}">{{message.message}}</span>
-				</p>
+				</p> -->
+				<p ng-repeat="message in messages " class="message">
+				 {{message.message}}
+				 </p>
 			</div>
 		</div>
 	</div>
