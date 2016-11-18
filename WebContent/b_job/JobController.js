@@ -39,8 +39,7 @@ app.controller('JobController', ['JobService', '$scope', '$location', '$rootScop
 						function(errResponse) {
 							console.error("Error while getting job list.")
 						});
-		};
-		
+		};		
 		self.listJobs();
 		
 		self.createJob = function(job) {
@@ -154,7 +153,8 @@ app.controller('JobController', ['JobService', '$scope', '$location', '$rootScop
 						.applyForJob(job)
 						.then(function(d) {
 							self.jobApplication = d;
-							alert("You have successfully applied for the job...")
+							alert("You have successfully applied for the job...");
+							self.listJobs();
 						},
 						function(errResponse) {
 							console.error('Error while applying for job...')

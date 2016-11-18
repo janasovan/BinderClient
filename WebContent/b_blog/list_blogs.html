@@ -1,12 +1,12 @@
 <div id="list-blogs">
 	<div class="container">
-		<div class="row">
+		<div class="row x-row">
 			<div class="col-md-8 col-md-offset-2">
 				<fieldset>
-					<legend>Welcome to Blog</legend>
+					<legend class="x-legend">Welcome to Blog</legend>
 					<div class="blog-list-font">
 						<div ng-show="currentUser.role=='ADMIN'">
-							<div class="panel panel-default" ng-repeat="blog in ctrl.blogs"
+							<div class="x-panel" ng-repeat="blog in ctrl.blogs"
 								ng-show="blog.status=='N'" style="margin-bottom: 2em;">
 								<a>
 									<div class="one">
@@ -28,7 +28,7 @@
 							</div>
 						</div>
 						<div ng-hide="currentUser.role=='ADMIN'">
-							<div class="panel panel-default" ng-repeat="blog in ctrl.blogs"
+							<div class="x-panel" ng-repeat="blog in ctrl.blogs"
 								ng-show="blog.status=='A'" style="margin-bottom: 2em;">
 								<a>
 									<div class="one">

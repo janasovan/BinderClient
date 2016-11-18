@@ -1,12 +1,12 @@
 <div id="list-blogs">
 	<div class="container">
-		<div class="row">
+		<div class="row x-row">
 			<div class="col-md-8 col-md-offset-2">
 				<fieldset>
-					<legend>Find Jobs</legend>
+					<legend class="x-legend">My Applied Jobs</legend>
 					<div class="blog-list-font">
 						<div>
-							<div class="panel panel-default" ng-repeat="job in getAppliedJob"
+							<div class="x-panel" ng-repeat="job in getAppliedJob"
 								style="margin-bottom: 2em;">
 								<a>
 									<div class="one">
@@ -18,11 +18,9 @@
 									<div class="one">
 										<label><span>Job Location : </span>{{job.location}}</label>
 									</div>
-									<!-- <div class="one">
-										<label ng-show="jobApplication.status=='A'">Job Status : Applied</label>
-										<label ng-show="jobApplication.status=='R'">Job Status : Rejected</label>
-										<label ng-show="jobApplication.status=='C'">Job Status : Call for Interview</label>
-									</div> --> 
+									<input type="button" ng-click="ctrl.getJob(job.id)"
+												class="btn btn-info floatright" value="View Details"
+												style="margin-top: 13px; width: 10em; margin-right: 8px;" />
 								</a>
 							</div>
 						</div>

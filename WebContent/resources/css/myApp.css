@@ -698,19 +698,44 @@ div#forum-page {
     margin: 7px 15px;
         background: linear-gradient(to right, rgba(53, 53, 53, 0.35), rgba(255, 255, 255, 0));
 }
-#forum-area{
+#x-area{
 	background: linear-gradient(to right, rgba(140, 140, 140, 0.35) , rgba(255, 255, 255, 0));
 	padding: 1em;
 }
-h1#forum-name {
-    margin-bottom: 1em;
-}
-h1#forum-name {
+h1#x-name {
     margin-bottom: 1em;
     background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.15),rgba(255, 255, 255, 0));
 }
-
-
+.x-padding{
+	padding: 4px;
+	font-size: 18px;
+    color: rgba(0, 0, 0, 0.46);
+}
+.x-span{
+	font-size: 20px;
+    font-weight: 700;
+    font-variant: small-caps;
+    color: rgb(234, 234, 234);
+}
+.x-legend{
+	margin-bottom: 1em;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.45),rgba(255, 255, 255, 0));
+    font-size: 37px;
+    text-transform: uppercase;
+    font-family: -webkit-body;
+    color: #e9eaea;
+}
+.x-panel{
+	padding: 5px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0),rgba(0, 0, 0, 0.35), rgb(255, 255, 255),rgba(0, 0, 0, 0.35),rgba(255, 255, 255, 0));
+    border: none;
+}
+.x-row{
+	background: linear-gradient(to right, rgba(255, 255, 255, 0),rgba(126, 159, 232, 0.37),rgba(255, 255, 255, 0));
+}
+.y-row{
+	 background: linear-gradient(to right, rgba(255, 255, 255, 0),rgba(0, 0, 0, 0.73),rgba(255, 255, 255, 0));
+}
 
 
 
