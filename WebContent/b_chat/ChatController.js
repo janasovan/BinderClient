@@ -5,12 +5,11 @@
     $scope.max = 140;
     
     $scope.addMessage = function() {
-      ChatService.send($scope.message);
-      $scope.message = "";
+    	ChatService.send($scope.message);
+    	$scope.message = "";
     };
     
     ChatService.receive().then(null, null, function(message) {
-    	alert('receiveMessage');
-      $scope.messages.push(message);
+    	$scope.messages.push(message);
     });
   });
