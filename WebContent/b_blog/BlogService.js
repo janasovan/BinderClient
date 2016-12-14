@@ -110,6 +110,19 @@ app.factory('BlogService', ['$http', '$q', '$rootScope',
 									console.log("Error while approving Blog");
 									return $q.reject(errResponse);
 								});
+				},
+				
+				likeBlog : function(blog, id) {
+					console.log("-->BlogService : calling likeBlog() method : getting blog with id : " + id);
+					return $http
+								.put(BASE_URL+'/likeBlog/'+id, blog)
+								.then(function(response) {
+									return response.data;
+								},
+								function(errResponse) {
+									console.log("Error while liking Blog.");
+									return $q.reject(errResponse);
+								});
 				}
 				
 			};

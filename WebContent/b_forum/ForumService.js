@@ -99,6 +99,32 @@ app.factory('ForumService', ['$http', '$q', '$rootScope',
 									console.log('Error while deleting Forum');
 									return $q.reject(errResponse);
 								});
+				},
+				
+				likeForum : function(forum, id) {
+					console.log("-->ForumService : calling 'likeForum' method : getting forum with id : " + id);
+					return $http
+								.put(BASE_URL+'/forum/likeForum/'+id, forum)
+								.then(function(response) {
+									return response.data;
+								},
+								function(errResponse) {
+									console.log("Error while liking Forum.");
+									return $q.reject(errResponse);
+								});
+				},
+				
+				countComment : function(forum, id) {
+					console.log("-->ForumService : calling 'countComment' method : getting forum with id : " + id);
+					return $http
+								.put(BASE_URL+'/forum/countComment/'+id, forum)
+								.then(function(response) {
+									return response.data;
+								},
+								function(errResponse) {
+									console.log("Error while liking Forum.");
+									return $q.reject(errResponse);
+								});
 				}
 				
 			};
